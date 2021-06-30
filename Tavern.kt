@@ -66,4 +66,11 @@ private  fun placeOrder(patronName: String, menuData: String){
         "$patronName 說道: 感謝 $name ."
     }
     println("$phrase \n")
+    displayPatronBalances()
+}
+private  fun  displayPatronBalances(){
+    patronGold.forEach{
+        patron,balance ->
+        println("$patron,balance: ${"%.2f".format(balance)}")
+    }
 }
