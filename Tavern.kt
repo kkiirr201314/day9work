@@ -9,7 +9,8 @@ val menuList = File("data/tavern-menu-items.txt")
     .readText()
     .split("\r\n")
 
-val patronGold = mapOf("Eli" to 10.5, "Mordoc" to 8.0, "Sophie" to 5.5 )
+//val patronGold = mapOf("Eli" to 10.5, "Mordoc" to 8.0, "Sophie" to 5.5 )
+val patronGold = mutableMapOf<String,Double>()
 
 fun main() {
     (0..9).forEach{
@@ -19,7 +20,9 @@ fun main() {
         uniquePatrons += name
 
     }
-    println(uniquePatrons)
+    uniquePatrons.forEach{
+        patronGold[it] = 6.0
+    }
     var orderCount = 0
     while (orderCount <= 9){
         placeOrder(uniquePatrons.shuffled().first(),
@@ -27,10 +30,6 @@ fun main() {
         orderCount++
     }
     println(patronGold)
-
-    println(patronGold["Eli"])
-    println(patronGold["Mordoc"])
-    println(patronGold["Sophie"])
 }
 private fun toDragonSpeak(phrase: String) =
     phrase.replace(Regex("[aeiouAEIOU]")){
