@@ -29,7 +29,10 @@ fun main() {
             menuList.shuffled().first())
         orderCount++
     }
-    println(patronGold)
+}
+private  fun performPurchase(price: Double, patronName: String){
+    val totalPurse = patronGold.getValue(patronName)
+    patronGold[patronName] = totalPurse - price
 }
 private fun toDragonSpeak(phrase: String) =
     phrase.replace(Regex("[aeiouAEIOU]")){
@@ -54,7 +57,7 @@ private  fun placeOrder(patronName: String, menuData: String){
     val (type,name,price) = menuData.split(',')
     val message = "$patronName 買了一杯 $name ($type) 花了 $price."
     println(message)
-    //  performPurchase(price.toDouble())
+      performPurchase(price.toDouble(),patronName)
     //  val phrase = "Ah, dlicious $name!"
     //  println("Madrigal 驚呼道: ${toDragonSpeak(phrase)}")
     val phrase = if (name == "Dragon's Breath"){
@@ -62,6 +65,5 @@ private  fun placeOrder(patronName: String, menuData: String){
     } else {
         "$patronName 說道: 感謝 $name ."
     }
-    println(phrase)
-    println("")
+    println("$phrase \n")
 }
