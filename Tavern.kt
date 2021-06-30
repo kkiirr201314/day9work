@@ -27,6 +27,10 @@ fun main() {
         orderCount++
     }
     println(patronGold)
+
+    println(patronGold["Eli"])
+    println(patronGold["Mordoc"])
+    println(patronGold["Sophie"])
 }
 private fun toDragonSpeak(phrase: String) =
     phrase.replace(Regex("[aeiouAEIOU]")){
